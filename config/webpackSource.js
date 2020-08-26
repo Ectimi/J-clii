@@ -1,13 +1,29 @@
-export const source = {
+const source = {
     lib: [{
+        name: 'webpack',
+        command: 'npm install -D webpack webpack-cli webpack-dev-server'
+    },
+    {
         name: 'webpack-merge',
         command: 'npm install --save-dev webpack-merge'
-    },{
-        name:'cross-env',
-        command:'npm i -D cross-env'
-    } ,{
+    }, {
+        name: 'cross-env',
+        command: 'npm i -D cross-env'
+    }, {
         name: 'vue',
         command: 'npm i -S vue vue-router vuex'
+    },{
+        name:'vant',
+        command:'npm i vant -S'
+    },{
+        name:'postcss-pxtorem',
+        command:'npm install postcss-pxtorem --save-dev'
+    },{
+        name:'amfe-flexible',
+        command:'npm i -S amfe-flexible'
+    },{
+        name:'lib-flexible',
+        command:'npm i -S lib-flexible'
     }
     ],
     plugin: [
@@ -18,29 +34,32 @@ export const source = {
         }, {
             //帮你删除某个目录的文件,是在打包前删除所有上一次打包好的文件
             name: 'clean-webpack-plugin',
-            command: 'npm i -D clear-webpack-plugin'
+            command: 'npm i -D clean-webpack-plugin'
         }, {
             //把css样式从js文件中提取到单独的css文件中
             name: 'mini-css-extract-plugin',
             command: 'npm i -D mini-css-extract-plugin'
+        }, {
+            name: 'copy-webpack-plugin',
+            command: 'npm install --save-dev copy-webpack-plugin'
+        }, {
+            name: 'optimize-css-assets-webpack-plugin',
+            command: 'npm install --save-dev optimize-css-assets-webpack-plugin'
+        }, {
+            name: 'uglifyjs-webpack-plugin',
+            command: 'npm i -D uglifyjs-webpack-plugin'
+        }, {
+            name: 'babelrc',
+            command: 'npm install --save-dev @babel/plugin-syntax-dynamic-import'
+        }, {
+            name: 'happypack',
+            command: 'npm i -D happypack'
+        }, {
+            name: 'webpack-bundle-analyzer',
+            command: 'npm i -D webpack-bundle-analyzer'
         },{
-            name:'copy-webpack-plugin',
-            command:'npm install --save-dev copy-webpack-plugin'
-        },{
-            name:'optimize-css-assets-webpack-plugin',
-            command:'npm install --save-dev optimize-css-assets-webpack-plugin'
-        },{
-            name:'uglifyjs-webpack-plugin',
-            command:'npm i -D uglifyjs-webpack-plugin'
-        },{
-            name:'babelrc',
-            command:'npm install --save-dev @babel/plugin-syntax-dynamic-import'
-        },{
-            name:'happypack',
-            command:'npm i -D happypack'
-        },{
-            name:'webpack-bundle-analyzer',
-            command:'npm i -D webpack-bundle-analyzer'
+            name:'babel-plugin-import',
+            command:'npm i babel-plugin-import -D'
         }
     ],
     loader: [
@@ -79,3 +98,5 @@ export const source = {
         }
     ]
 }
+
+module.exports = source

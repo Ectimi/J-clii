@@ -1,14 +1,13 @@
 {
-    "name": "test",
+    "name": "vue-template",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
     "sideEffects": false,
     "scripts": {
         "dev": "webpack-dev-server --config ./build/webpack.dev.js",
         "build": "webpack --config ./build/webpack.prod.js",
         "start": "npx webpack --config ./build/webpack.dev.js",
-        "analyz": "cross-env NODE_ENV=production npm_config_report=true npm run build" ,
+        "analyz": "cross-env NODE_ENV=production npm_config_report=true npm run build",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],

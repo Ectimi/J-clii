@@ -5,15 +5,15 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const vueLoaderPlugin = require('vue-loader/lib/plugin')
 const HappyPack = require('happypack')
-const happyThreadPool = HappyPack.ThreadPool({size:os.cpus().length})
+const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const devMode = process.argv.indexOf('--mode=production') === -1;
 
 module.exports = {
     mode: 'development',
-    entry: path.resolve(__dirname, './src/main.js'),
-    outpust: {
-        path: path.resolve(__dirname, './dist'),
+    entry: path.resolve(__dirname, '../src/main.js'),
+    output: {
+        path: path.resolve(__dirname, '../dist'),
         filename: 'js/[name].[hash].bundle.js',
         chunkFilename: 'js/[name].[hash:8].js'
     },
@@ -51,9 +51,9 @@ module.exports = {
                                 options: {
                                     name: 'img/[name].[hash:8].[ext]'
                                 }
-                            }
+                            },
+                            exclude: /node_modules/
                         },
-                        exclude:/node_modules/
                     }
                 ]
             }, {
@@ -68,9 +68,9 @@ module.exports = {
                                 options: {
                                     name: 'media/[name].[hash:8].[ext]'
                                 }
-                            }
+                            },
+                            exclude: /node_modules/
                         },
-                        exclude:/node_modules/
                     }
                 ]
             }, {
@@ -92,20 +92,23 @@ module.exports = {
             }, {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use:[{
-                    loader:'happypack/loader?id=happyBabel'
-                }]
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                },
             }, {
                 test: /\.vue$/,
-                loader:'vue-loader',
-                include:[path.resolve(__dirname,'src')],
-                exclude:/node_modules/
+                loader: 'vue-loader',
+                include: [path.resolve(__dirname, '../src')],
+                exclude: /node_modules/
             }
         ]
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, './public/index.html')
+            template: path.resolve(__dirname, '../public/index.html')
         }),
         new CleanWebpackPlugin(),
         new vueLoaderPlugin(),
@@ -113,30 +116,30 @@ module.exports = {
             filename: devMode ? '[name].css' : '[name].[hash].css',
             chunkFilename: devMode ? '[id].css' : '[id].[hash].css'
         }),
-        new HappyPack({
-            id:'happyBabel',
-            loaders:[
-                {
-                    loader:'babel-loader',
-                    options:{
-                        presets:[
-                            ['@bebel/preset-env']
-                        ],
-                        cacheDirectory:true
-                    }
-                }
-            ],
-            threadPool:happyThreadPool
-        }),
-        new BundleAnalyzerPlugin({
-            analyzerHost:'127.0.0.1',
-            analyzerPort:8889
-        })
+        // new HappyPack({
+        //     id:'happyBabel',
+        //     loaders:[
+        //         {
+        //             loader:'babel-loader',
+        //             options:{
+        //                 presets:[
+        //                     ['@bebel/preset-env']
+        //                 ],
+        //                 cacheDirectory:true
+        //             }
+        //         }
+        //     ],
+        //     threadPool:happyThreadPool
+        // }),
+        // new BundleAnalyzerPlugin({
+        //     analyzerHost:'127.0.0.1',
+        //     analyzerPort:8889
+        // })
     ],
     resolve: {
         alias: {
             'vue$': 'vue/dist/vue.runtime.esm.js',
-            ' @': path.resolve(__dirname, './src')
+            ' @': path.resolve(__dirname, '../src')
         },
         extensions: ['*', '.js', '.json', '.vue']
     },

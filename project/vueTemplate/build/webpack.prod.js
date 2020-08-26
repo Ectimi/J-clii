@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
-module.exports = WebpackMerge(webpackConfig, {
+module.exports = WebpackMerge.merge(webpackConfig, {
     mode: 'production',
     devtool: 'cheap-module-source-map',
     plugins: [
