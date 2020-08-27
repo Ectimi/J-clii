@@ -1,5 +1,6 @@
 const path = require('path');
 const os = require('os')
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -113,9 +114,12 @@ module.exports = {
         new CleanWebpackPlugin(),
         new vueLoaderPlugin(),
         new MiniCssExtractPlugin({
-            filename: devMode ? '[name].css' : '[name].[hash].css',
-            chunkFilename: devMode ? '[id].css' : '[id].[hash].css'
+            filename: devMode ? 'css/[name].css' : 'css/[name].[hash].css',
+            chunkFilename: devMode ? 'css/[id].css' : 'css/[id].[hash].css'
         }),
+        new webpack.DefinePlugin({
+            BASE_URL: '"/"'
+        })
         // new HappyPack({
         //     id:'happyBabel',
         //     loaders:[

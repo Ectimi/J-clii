@@ -7,7 +7,7 @@ module.exports = WebpackMerge.merge(webpackConfig, {
     mode: 'development',
     devtool: 'cheap-module-eval-source-map',
     devServer: {
-        contentBase: path.join(__dirname, "dist"),   // dist目录开启服务器
+        contentBase: path.join(__dirname, "../public"),   // dist目录开启服务器
         compress: true,    // 是否使用gzip压缩
         port: 3000,    // 端口号
         open: true,   // 自动打开网页

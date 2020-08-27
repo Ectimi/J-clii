@@ -1,7 +1,7 @@
 const source = {
     lib: [{
         name: 'webpack',
-        command: 'npm install -D webpack webpack-cli webpack-dev-server'
+        command: 'npm install webpack webpack-cli webpack-dev-server'
     },
     {
         name: 'webpack-merge',
@@ -24,6 +24,9 @@ const source = {
     },{
         name:'lib-flexible',
         command:'npm i -S lib-flexible'
+    },{
+        name:'axios',
+        command:'npm i axios'
     }
     ],
     plugin: [
@@ -45,9 +48,6 @@ const source = {
         }, {
             name: 'optimize-css-assets-webpack-plugin',
             command: 'npm install --save-dev optimize-css-assets-webpack-plugin'
-        }, {
-            name: 'uglifyjs-webpack-plugin',
-            command: 'npm i -D uglifyjs-webpack-plugin'
         }, {
             name: 'babelrc',
             command: 'npm install --save-dev @babel/plugin-syntax-dynamic-import'

@@ -56,6 +56,7 @@ inquirer.prompt(questions).then(async answer => {
                 name: 'isDelete'
             }])
             if (isDelete) {
+                console.log(chalk.green('Preparing...'));
                 shell.rm('-rf', targetPath)
                 console.log(chalk.white(`warn:the folder '${projectName}' already exsits,now already remove old folder,and create a new folder`));
             } else {
