@@ -1,4 +1,4 @@
-# J-clii
+# J-cli
 
 这是一个简易的cli,使用webpack集成了vue的开发环境，包含了 vue  vue-router  vuex   vant  axios  scss  less
 
